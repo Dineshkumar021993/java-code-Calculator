@@ -15,7 +15,19 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  build:steps:
+  - uses: actions/checkout@v2
+    name: Check out code
+
+  - uses: mr-smithers-excellent/docker-build-push@v5
+    name: Build & push Docker image
+    with:
+      image: dineshkumar021993/web1
+      tags: latest
+      registry: docker.io
+      dockerfile: Dockerfile.ci
+      username: dineshkumar021993
+      password: dinesh@#4
 
     runs-on: ubuntu-latest
 
